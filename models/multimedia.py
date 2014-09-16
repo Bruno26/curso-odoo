@@ -11,7 +11,7 @@ class multimedia(osv.osv):
 		'title': fields.char('Título'),
 		'release_date': fields.date('Fecha de pubicación'),
 		'code': fields.char('Código'),
-		'categoria_id';fields.many2one('co.categoria', 'Categoria'),
+		'categoria_id':fields.many2one('co.categoria', 'Categoria'),
 		'medio_ids': fields.many2many(
 			'co.tipo.medio',
 			'multimedia_medio_rel',
