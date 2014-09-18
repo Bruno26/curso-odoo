@@ -19,20 +19,35 @@ class suscripcion(osv.osv):
 
 	#AGREGANDO LAS COLUMNAS DE LA TABLA DE UN MODULO
 	_columns = {
-		'code':fields.char('Código'),
-		'type': fields.selection(TIPO, 'Tipo de Suscripcion'),
-		'date_start':fields.date('Inicio suscripcion'),
-		'date_end':fields.date('Fin suscripcion'),
+		'code':fields.char('Código', help='El codigo se genera de manera automatica...'),
+		'type': fields.selection(TIPO, 'Tipo de Suscripcion', required=True),
+		'date_start':fields.date('Inicio suscripcion', required=True),
+		'date_end':fields.date('Fin suscripcion', required=True),
 		'active':fields.boolean('Activo'),
-		'suscriptor_id':fields.many2one('co.suscriptor','Afiliado'),
+		'suscriptor_id':fields.many2one('co.suscriptor','Afiliado', required=True),
 	}
 
 	_defaults={
 		'active':True,
 		'date_start':datetime.now().strftime('%Y-%m-%d'),
-		#'code': lambda self, cr, uid, context: self.pool.get('ir.sequence').get(cr, uid,'seq.suscripcion'),
 	}
 
+	# FUNCTION QUE VALIDA QUE LA FECHA END NO SEA MAYOR QUE LA FECHA START
+	# TODA FUNCION QUE COMIENZE CON _ SON FUNCUINES PRIVADAS DEL MODELO 
+	def _check_dates(self, cr, uid, ids, context=None):
+		# CONVERTE TODAS LAS ENTRADAS EN IN LISTA PAARA EVITAR ERROR 
+		if isinstance (ids ,(int, long)):
+			ids = [ids]
+
+		for s in self.browse(cr, uid, ids, context=context):
+			if s.date_end <= s.date_start:
+				return False
+		return True
+
+	_constraints = [
+		(_check_dates, 'Fecha de inicio debe ser menor a fecha final',
+			['date_start', 'date_end'])
+	]
 
 	#funcion que crea el code secuencial 
 	def create(self, cr, uid, values, context=None):

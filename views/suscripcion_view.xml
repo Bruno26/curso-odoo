@@ -13,9 +13,10 @@
 							<field name="active"/>
 							<separator/>
 						<div class="oe_title">
-							<label for="code" class="oe_edit_only"/>
+							<label for="code" class="oe_edit_only"
+								 string="El código se genera de forma automática despues de guardar"/>
 							<h1>
-								<field name="code"  readonly="1"/>
+								<field name="code" readonly="1"/>
 							</h1>
 							<label for="suscriptor_id" class="oe_edit_only"/>
 							<h3>
@@ -41,7 +42,7 @@
 			<field name="name">co.suscripcion.tree</field>
 			<field name="model">co.suscripcion</field>
 			<field name="arch" type="xml">
-				<tree string="Suscriptor" >
+				<tree string="Suscriptor" colors="brown:type=='bronce';green:type=='plarta';orange:type=='oro'">
 					<field name="code"/>
 					<field name="type"/>
 					<field name="date_start"/>
