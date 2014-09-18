@@ -2,17 +2,17 @@
 <openerp>
 	<data>
 		<!--Menu padre-->
-		<menuitem id="menu_base_curso" name="Inicio" sequence="5" groups="base.group_user"/>
+		<menuitem id="menu_base_curso" name="Inicio" sequence="5" groups="group_admin,group_suscriptor"/>
 		<!--Submenu multimedia-->
 		<menuitem id="submenu_multimedia" name="Multimedia" parent="menu_base_curso" 
-				sequence="5" groups="base.group_user"/>
+				sequence="5" groups="group_admin,group_suscriptor"/>
 
 		<!--Submenu tienda-->
 		<menuitem id="submenu_tienda" name="Tienda" parent="menu_base_curso" 
-				sequence="5" groups="base.group_user"/>
+				sequence="5" groups="group_admin"/>
 
 		<!--Submenu suscriptor-->
 		<menuitem id="submenu_suscriptor" name="Suscripciones" parent="menu_base_curso" 
-				sequence="5" groups="base.group_user"/>
+				sequence="5" groups="group_admin,group_suscriptor"/>
 	</data>
 </openerp>
