@@ -13,7 +13,7 @@
 							<h1>
 								<field name="name"/>
 							</h1>
-							<label for="medio_ids" class="oe_edit_only" string="Con acceso a: "/>
+							<label for="medio_ids" class="oe_edit_only" string="con acceso a: "/>
 							<h3>
 								<field name="medio_ids" widget="many2many_tags"/>
 							</h3>

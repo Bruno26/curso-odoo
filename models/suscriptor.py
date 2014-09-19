@@ -20,6 +20,4 @@ class suscriptor(osv.osv):
 			u'Ya existe el número de cédula.'),
 	]
 
-
-
 suscriptor()

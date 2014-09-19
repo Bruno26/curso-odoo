@@ -76,3 +76,16 @@ class suscripcion(osv.osv):
 		return super(suscripcion,self).create(cr, uid, values, context=context)
 
 suscripcion()
+
+
+
+class suscriptor(osv.osv):
+	_inherit = 'co.suscriptor'
+
+	_columns = {
+		'suscripcion_ids':fields.one2many(
+			'co.suscripcion',
+			'suscriptor_id'),
+	}
+	
+suscriptor()

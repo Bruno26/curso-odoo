@@ -22,6 +22,7 @@
 		'data/suscripcion_data.xml',
 		'security/ir.model.access.csv',
 		'security/menu_security.xml',
+		'reports/listado_multimedia_report.xml',
 	],
 	'demo': [],
 }
