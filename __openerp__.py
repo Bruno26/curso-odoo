@@ -18,6 +18,7 @@
 		'views/suscriptor_view.xml',
 		'views/suscripcion_view.xml',
 		'views/solicitud_view.xml',
+		'views/tipo_suscripcion_view.xml',
 		'data/suscripcion_data.xml',
 		'security/ir.model.access.csv',
 		'security/menu_security.xml',

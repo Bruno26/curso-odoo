@@ -10,6 +10,22 @@ TIPO = [
 	('plarta','Plan PLATA'),
 	('bronce','Plan BRONCE'),
 ]
+class tipo_suscripcion(osv.osv):
+	_name = 'co.tipo.suscripcion'
+	_description ='CO Tipo Suscripcion'
+
+	_columns = {
+		'name': fields.char('Nombre'),
+		'medio_ids':fields.many2many(
+			'co.tipo.medio',
+			'tipo_suscripcion_medio_rel',
+			'tipo_id',
+			'medio_id'),
+	}
+
+	__sql_constraints =[
+		('name_uniq', 'unique(name)', 'El nombre no puede repertirse')
+	]
 
 class suscripcion(osv.osv):
 	#CAMPOS OBLIGATORIOS , RESERVADOS
@@ -20,7 +36,8 @@ class suscripcion(osv.osv):
 	#AGREGANDO LAS COLUMNAS DE LA TABLA DE UN MODULO
 	_columns = {
 		'code':fields.char('Código', help='El codigo se genera de manera automatica...'),
-		'type': fields.selection(TIPO, 'Tipo de Suscripcion', required=True),
+		#'type': fields.selection(TIPO, 'Tipo de Suscripcion', required=True),
+		'type': fields.many2one('co.tipo.suscripcion', 'Tipo de Suscripcion', required=True),
 		'date_start':fields.date('Inicio suscripcion', required=True),
 		'date_end':fields.date('Fin suscripcion', required=True),
 		'active':fields.boolean('Activo'),

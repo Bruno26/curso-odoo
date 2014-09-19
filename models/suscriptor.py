@@ -12,11 +12,14 @@ class suscriptor(osv.osv):
 		'name': fields.char('Nombre'),
 		'identification': fields.char('Cédula'),
 		'address': fields.text('Dirección'),
+		'user_id':fields.many2one('res.users','Usuario'), # CREANDO RELACION 
 	}
 
 	_sql_constraints=[
 		('identification_uniq', 'unique(identification)', 
 			u'Ya existe el número de cédula.'),
 	]
+
+
 
 suscriptor()
